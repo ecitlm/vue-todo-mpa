@@ -34,18 +34,18 @@ instance.interceptors.response.use(response => {
 const httpRequest = (url, data = {}) => {
   return new Promise((resolve, reject) => {
     instance.post(url, data)
-        .then(res => {
-          resolve(res)
-        })
-        .catch(error => {
-          if (error.response) {
-            if (error.response.status === 200) {
-              reject(error.response)
-            }
-          } else {
-            Toast('请求无响应')
+      .then(res => {
+        resolve(res)
+      })
+      .catch(error => {
+        if (error.response) {
+          if (error.response.status === 200) {
+            reject(error.response)
           }
-        })
+        } else {
+          Toast('请求无响应')
+        }
+      })
   })
 }
 

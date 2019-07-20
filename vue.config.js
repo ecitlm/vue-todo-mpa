@@ -3,8 +3,8 @@ module.exports = {
   // outputDir: 在npm run build时 生成文件的目录 type:string, default:'dist'
   outputDir: process.env.outputDir,
   assetsDir: 'static',
-  //baseUrl: './', // 资源文件的目录
-  publicPath: './', //资源文件的目录
+  // baseUrl: './', // 资源文件的目录
+  publicPath: './', // 资源文件的目录
   lintOnSave: process.env.NODE_ENV !== 'production',
   productionSourceMap: false,
   transpileDependencies: [], // 默认babel-loader忽略mode_modules，这里可增加例外的依赖包名
@@ -24,18 +24,18 @@ module.exports = {
     }
   },
   css: {
-    sourceMap:true,
+    sourceMap: true,
     loaderOptions: {
       postcss: {
         plugins: [
           require('autoprefixer')(),
           require('postcss-pxtorem')({
             rootValue: 75,
-            unitPrecision: 5, //保留小数位
-            selectorBlackList: ['bb_1'], //过滤的类名
-            replace: true, //默认直接替换属性
-            propList: ["*"],
-            propWhiteList: ["*"],
+            unitPrecision: 5, // 保留小数位
+            selectorBlackList: ['bb_1'], // 过滤的类名
+            replace: true, // 默认直接替换属性
+            propList: ['*'],
+            propWhiteList: ['*'],
             MinPixelValue: 2 // 设置最小转化的px值，貌似不起作用 Px
           })
         ]
@@ -63,13 +63,13 @@ module.exports = {
           sourceMap: false,
           parallel: true
         })
-      );
+      )
     } else {
       // 为开发环境修改配置...
     }
   },
   // 三方插件的选项
   pluginOptions: {
-    //vconsole: {enable: process.env.NODE_ENV !== 'production'}
+    // vconsole: {enable: process.env.NODE_ENV !== 'production'}
   }
 }
