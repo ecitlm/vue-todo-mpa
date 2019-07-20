@@ -56,6 +56,7 @@
   },
   "browserslist": [
     "> 1%",
-    "last 2 versions"
+    "last 4 versions",
+    "not ie <= 9"
   ]
 }

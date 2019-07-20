@@ -1,8 +1,12 @@
 <template>
   <div class="home">
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
+    </div>
     <HelloWorld msg="Welcome to  Vue.js App"/>
     <div class="list">
-      <p v-for="(item,key) in list" :key="key">{{item.title}}</p>
+      <p v-for="(item,key) in list" :key="key" class="bb_1">{{item.title}}</p>
     </div>
   </div>
 </template>
@@ -34,6 +38,10 @@ created() {
   .list {
     p{
       font-size: 36px;
+      border-bottom: 2px solid #e3e3e3;
+    }
+    .bb_1{
+      border-bottom: 1px solid #e3e3e3;
     }
   }
 </style>
