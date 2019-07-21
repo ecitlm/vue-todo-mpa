@@ -6,7 +6,6 @@ export default {
     state['loadingSum']++
     state['loading'] = true
     document.addEventListener('touchmove', window.forbidScroll, false)
-    console.log(state['loadingSum'])
   },
   [types.HIDE_LOADING] (state) {
     if (--state['loadingSum'] <= 0) {
