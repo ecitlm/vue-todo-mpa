@@ -16,6 +16,7 @@ yarn install
 npm run serve
 # localhost:9527
 ```
+
 ### used module
 1. `vue-router`集成、并模块化抽离‘
 2. `axios`网络请求封装、以及拦截器判断
