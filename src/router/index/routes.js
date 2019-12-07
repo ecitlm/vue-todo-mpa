@@ -1,6 +1,6 @@
 import Toast from '@/components/ui-lib/toast'
 import store from '@/store'
-const Home = () => import('@/views/Home')
+const Home = () => import('@/views/index/Home')
 // const About = () => import('@/views/About')
 let oRoutes = {}
 let arrRoutes = [
@@ -10,7 +10,7 @@ let arrRoutes = [
 for (const path of arrRoutes) {
   oRoutes[path.slice(path.lastIndexOf('/') + 1)] = resolve => {
     store.dispatch('showLoading')
-    import(`@/views/${path}`)
+    import(`@/views/index/${path}`)
       .then(module => {
         store.dispatch('hideLoading')
         resolve(module)

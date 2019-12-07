@@ -1,10 +1,10 @@
 import '@babel/polyfill'
 import Vue from 'vue'
 import App from './App.vue'
-import router from './router/index'
-import store from './store/index'
-import './filters/index'
-import api from './api/http'
+import router from '@/router/index/index.js'
+import store from '@/store/index'
+import '@/filters/index'
+import api from '@/api/http'
 Vue.prototype.$api = api
 Vue.config.productionTip = false
 // 非正式环境添加 vconsole 调试

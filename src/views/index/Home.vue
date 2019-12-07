@@ -4,7 +4,7 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div>
-    <HelloWorld msg="Welcome to  Vue.js App"/>
+    <HelloWorld msg="多页应用index模块"/>
     <div class="list">
       <p v-for="(item,key) in list" :key="key" class="bb_1">{{item.title}}</p>
     </div>

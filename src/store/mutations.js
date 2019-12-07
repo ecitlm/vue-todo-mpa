@@ -13,7 +13,6 @@ export default {
       state['loadingSum'] = 0
       document.removeEventListener('touchmove', window.forbidScroll, false)
     }
-    console.log(state['loadingSum'])
   },
   [types.SAVE_TOKEN] (state, token) {
     storage.set('token', token)

@@ -1,8 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from '@/store'
-import routes from '@/router/routes'
-
+import routes from '@/router/news/routes'
 Vue.use(VueRouter)
 
 const router = new VueRouter({
