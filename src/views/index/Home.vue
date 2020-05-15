@@ -1,8 +1,13 @@
 <template>
   <div class="home">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
+      <router-link to="/">Home</router-link>
+      <br>
       <router-link to="/about">About</router-link>
+      <br>
+      <a :href="'/news.html'">
+        多页应用new.html
+      </a>
     </div>
     <HelloWorld msg="多页应用index模块"/>
     <div class="list">
@@ -35,6 +40,9 @@ created() {
 }
 </script>
 <style lang="scss">
+  #nav {
+    font-size: 24px;
+  }
   .list {
     p{
       font-size: 36px;

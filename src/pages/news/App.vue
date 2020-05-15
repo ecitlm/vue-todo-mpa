@@ -28,7 +28,7 @@
   box-shadow: #ff6a3e;
   border-radius: 2px;
   h1{
-    font-size: 75px;
+    font-size: 20px;
     box-shadow: #ff6a3e;
     display: flex;
     flex: 1;

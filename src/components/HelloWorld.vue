@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1>{{ msg | uppercase}}</h1>
+    <h5>{{ msg | uppercase}}</h5>
   </div>
 </template>
 

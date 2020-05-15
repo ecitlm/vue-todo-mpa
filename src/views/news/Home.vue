@@ -3,6 +3,7 @@
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
+      <router-link to="/news.html">news</router-link>
     </div>
     <HelloWorld msg="多页应用news模块"/>
     <div class="list">
@@ -35,6 +36,9 @@ created() {
 }
 </script>
 <style lang="scss">
+  #nav{
+    font-size: 20px;
+  }
   .list {
     p{
       font-size: 36px;
