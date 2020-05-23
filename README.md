@@ -3,7 +3,7 @@
 
 ### start Install
 ```shell
-git clone https://github.com/ecitlm/vue-cli3.git
+git clone https://github.com/ecitlm/vue-todo-mpa.git
 cd vue-cli3
 
 # use npm
