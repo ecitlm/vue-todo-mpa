@@ -1,31 +1,39 @@
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const CompressionWebpackPlugin = require('compression-webpack-plugin')
+const webpack = require('webpack')
+const path = require('path')
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
+const productionGzipExtensions = /\.(js|css|json|txt|html|ico|svg)(\?.*)?$/i
 let glob = require('glob')
 
-//配置pages多页面获取当前文件夹下的html和js
-function getEntry(globPath) {
-  let entries = {}, tmp, htmls = {}
+// 配置pages多页面获取当前文件夹下的html和js
+function getEntry (globPath) {
+  let entries = {}
+  let tmp = []
+  let htmls = {}
 
   // 读取src/pages/**/底下所有的html文件
-  glob.sync(globPath+'html').forEach(function(entry) {
+  glob.sync(globPath + 'html').forEach(function (entry) {
     tmp = entry.split('/').splice(-3)
     htmls[tmp[1]] = entry
   })
 
   // 读取src/pages/**/底下所有的js文件
-  glob.sync(globPath+'js').forEach(function(entry) {
+  glob.sync(globPath + 'js').forEach(function (entry) {
     tmp = entry.split('/').splice(-3)
     entries[tmp[1]] = {
       entry,
-      template: htmls[tmp[1]] ? htmls[tmp[1]] : 'index.html', //  当前目录没有有html则以共用的public/index.html作为模板
-      filename:tmp[1] + '.html'   //  以文件夹名称.html作为访问地址
-    };
-  });
+      // 当前目录没有有html则以共用的public/index.html作为模板
+      template: htmls[tmp[1]] ? htmls[tmp[1]] : 'index.html',
+      filename: tmp[1] + '.html' //  以文件夹名称.html作为访问地址
+    }
+  })
   return entries
 }
 let pages = getEntry('./src/pages/**/*.')
 
 module.exports = {
-  pages:pages,
+  pages: pages,
   // outputDir: 在npm run build时 生成文件的目录 type:string, default:'dist'
   outputDir: process.env.outputDir,
   assetsDir: 'static',
@@ -88,6 +96,26 @@ module.exports = {
           },
           sourceMap: false,
           parallel: true
+        }),
+        new CompressionWebpackPlugin({
+          threshold: 10240,
+          deleteOriginalAssets: false,
+          filename: '[path].gz[query]',
+          algorithm: 'gzip',
+          test: productionGzipExtensions,
+          minRatio: 0.8
+        }),
+        new webpack.DllReferencePlugin({
+          context: process.cwd(), // 当前目录
+          manifest: require('./build/vendor-manifest.json')
+        }),
+        // 将打包出来文件动态引入index.html
+        new AddAssetHtmlPlugin({
+          // dll文件位置
+          filepath: path.resolve(__dirname, './public/static/js/vendor.dll.js'),
+          // dll 引用路径
+          publicPath: './static/js/',
+          outputPath: '/static/js/' // 输出的目录地址
         })
       )
     } else {
